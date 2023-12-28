@@ -47,7 +47,24 @@ public class AffineTransformations {
             scaleMatrix.transform(vertex);
         }
     }
-    public static void translate(Vector3f translationVector) {
+    public static void translate(Model model, Vector3f translationVector) {
         // Применить вектор перемещения ко всем вершинам
+        Matrix4f scaleMatrix = new Matrix4f();
+        scaleMatrix.setIdentity();
+
+
+        scaleMatrix.m03 = translationVector.x;
+        scaleMatrix.m13 = translationVector.y;
+        scaleMatrix.m23 = translationVector.z;
+        scaleMatrix.m33 = 1;
+
+        for (Vector3f vertex : model.vertices) {
+            Vector4f vertex4f =  new Vector4f(vertex.x, vertex.y, vertex.z,1);
+            scaleMatrix.transform(vertex4f);
+
+            vertex.x = vertex4f.x;
+            vertex.y = vertex4f.y;
+            vertex.z = vertex4f.z;
+        }
     }
 }

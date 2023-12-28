@@ -6,13 +6,14 @@ import cgvsu.objreader.IncorrectFileException;
 import cgvsu.objreader.ObjReader;
 import cgvsu.objreader.PathReadException;
 import cgvsu.AffineTransformation.*;
-import static cgvsu.AffineTransformation.AffineTransformations.scale;
-import static cgvsu.AffineTransformation.AffineTransformations.rotate;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.Vector;
+
+import static cgvsu.AffineTransformation.AffineTransformations.*;
 
 
 public class Main {
@@ -35,15 +36,24 @@ public class Main {
 //        System.out.println("Polygons: " + model.polygons.size());
 //        System.out.println("_________");
         System.out.println(model.vertices.get(0));
+
+        //scale
 //        Vector3f vector3f = new Vector3f(1.5F,1.0F, 0.8F);
 //        scale(model,vector3f);
 //        System.out.println(model.vertices.get(0));
 //        System.out.println(Math.cos(30)*(-1));
-        rotate(model, (float) Math.toRadians(186),"x");
+
+        //rotate
+//        rotate(model, (float) Math.toRadians(186),"x");
+//        System.out.println(model.vertices.get(0));
+
+        //translation
+
+        Vector3f vector3f = new Vector3f(2.0f,4.1f,5.6f);
+        translate(model,vector3f);
         System.out.println(model.vertices.get(0));
 
-        System.out.println(Math.toRadians(186));
+
     }
 
-    public static final float eps = 1e-7f;
 }
