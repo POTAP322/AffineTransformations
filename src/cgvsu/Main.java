@@ -7,6 +7,7 @@ import cgvsu.objreader.ObjReader;
 import cgvsu.objreader.PathReadException;
 import cgvsu.AffineTransformation.*;
 import static cgvsu.AffineTransformation.AffineTransformations.scale;
+import static cgvsu.AffineTransformation.AffineTransformations.rotate;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -19,7 +20,7 @@ public class Main {
     public static void main(String[] args) throws PathReadException, IncorrectFileException {
         String fileContent = null;
         try {
-            Path fileName = Path.of("C:\\Users\\Dima\\IdeaProjects\\AffineTransformations\\Objects\\new1.obj");
+            Path fileName = Path.of("C:\\Users\\User\\IdeaProjects\\AffineTransformations\\Objects\\new1.obj");
             fileContent = Files.readString(fileName);
         } catch (IOException e) {
             throw new PathReadException();
@@ -34,10 +35,14 @@ public class Main {
 //        System.out.println("Polygons: " + model.polygons.size());
 //        System.out.println("_________");
         System.out.println(model.vertices.get(0));
-        ArrayList<Vector3f> vertices = new ArrayList<Vector3f>();
-        Vector3f vector3f = new Vector3f(1.5F,1.0F, 0.8F);
-        scale(model,vector3f);
+//        Vector3f vector3f = new Vector3f(1.5F,1.0F, 0.8F);
+//        scale(model,vector3f);
+//        System.out.println(model.vertices.get(0));
+//        System.out.println(Math.cos(30)*(-1));
+        rotate(model, (float) Math.toRadians(186),"x");
         System.out.println(model.vertices.get(0));
+
+        System.out.println(Math.toRadians(186));
     }
 
     public static final float eps = 1e-7f;

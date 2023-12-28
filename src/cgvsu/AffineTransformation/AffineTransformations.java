@@ -6,8 +6,32 @@ import cgvsu.model.Model;
 public class AffineTransformations {
     Matrix4d matr4d = new Matrix4d();
 
-    public void rotate(float angle, Vector3f rotationAxis) {
+    public static void rotate(Model model, float radianAngle, String axis) {
         // Применить поворот ко всем вершинам
+
+        Matrix4f rotationMatrix = new Matrix4f();
+        rotationMatrix.setIdentity(); // создали единичная матрциа
+        if (axis == "z"){
+            rotationMatrix.m00 = (float) Math.cos(radianAngle);
+            rotationMatrix.m01 = (float) Math.sin(radianAngle);
+            rotationMatrix.m10 = (float) Math.sin(radianAngle)*(-1);
+            rotationMatrix.m11 = (float) Math.cos(radianAngle);
+        } else if (axis=="y") {
+            rotationMatrix.m00 = (float) Math.cos(radianAngle);
+            rotationMatrix.m02 = (float) Math.sin(radianAngle);
+            rotationMatrix.m20 = (float) Math.sin(radianAngle)*(-1);
+            rotationMatrix.m22 = (float) Math.cos(radianAngle);
+        } else if (axis == "x") {
+            rotationMatrix.m11 = (float) Math.cos(radianAngle);
+            rotationMatrix.m12 = (float) Math.sin(radianAngle);
+            rotationMatrix.m21 = (float) Math.sin(radianAngle)*(-1);
+            rotationMatrix.m22 = (float) Math.cos(radianAngle);
+        }
+        for (Vector3f vertex: model.vertices){
+            rotationMatrix.transform(vertex);
+        }
+
+
     }
     public static void scale(Model model,Vector3f scaleVector) {
         Matrix4f scaleMatrix = new Matrix4f();
