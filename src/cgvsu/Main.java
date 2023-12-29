@@ -44,14 +44,14 @@ public class Main {
 //        System.out.println(Math.cos(30)*(-1));
 
         //rotate
-//        rotate(model, (float) Math.toRadians(186),"x");
-//        System.out.println(model.vertices.get(0));
+        rotate(model, (float) Math.toRadians(180),"x");
+        System.out.println(model.vertices.get(0));
 
         //translation
 
-        Vector3f vector3f = new Vector3f(2.0f,4.1f,5.6f);
-        translate(model,vector3f);
-        System.out.println(model.vertices.get(0));
+//        Vector3f vector3f = new Vector3f(2.0f,4.1f,5.6f);
+//        translate(model,vector3f);
+//        System.out.println(model.vertices.get(0));
 
 
     }

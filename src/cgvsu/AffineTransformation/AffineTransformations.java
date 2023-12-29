@@ -4,7 +4,6 @@ import javax.vecmath.*;
 import cgvsu.model.Model;
 
 public class AffineTransformations {
-    Matrix4d matr4d = new Matrix4d();
 
     public static void rotate(Model model, float radianAngle, String axis) {
         // Применить поворот ко всем вершинам
