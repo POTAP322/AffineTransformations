@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Vector;
 
 import static cgvsu.AffineTransformation.AffineTransformations.*;
@@ -44,7 +45,10 @@ public class Main {
 //        System.out.println(Math.cos(30)*(-1));
 
         //rotate
-        rotate(model, (float) Math.toRadians(180),"x");
+        List<Vector3f> vector3fs1 = new ArrayList<>();
+        rotate(vector3fs1, (float) Math.toRadians(180),Axis.x);
+
+
         System.out.println(model.vertices.get(0));
 
         //translation
